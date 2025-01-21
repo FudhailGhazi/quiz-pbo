@@ -1,0 +1,45 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SwingGUI extends JFrame implements ActionListener {
+    private final JButton button;
+    private final JLabel label;
+
+    public SwingGUI() {
+        super("GUI Sederhana");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 150);
+        setLocationRelativeTo(null);
+
+        // Create button
+        button = new JButton("Klik Saya");
+        button.addActionListener(this);
+
+        // Create label
+        label = new JLabel();
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // Add components to a panel
+        JPanel panel = new JPanel(new FlowLayout());
+        panel.add(button);
+        panel.add(label);
+
+        // Add panel to frame
+        add(panel);
+
+        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == button) {
+            label.setText("Tombol telah diklik!");
+        }
+    }
+
+    public static void main(String[] args) {
+        new SwingGUI();
+    }
+}
